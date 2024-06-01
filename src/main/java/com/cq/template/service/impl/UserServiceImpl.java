@@ -2,7 +2,9 @@ package com.cq.template.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.cq.template.common.ResultCodeEnum;
+import com.cq.template.constants.DistributedLockKeyConstant;
 import com.cq.template.exception.BusinessException;
+import com.cq.template.manager.DistributedLockManager;
 import com.cq.template.mapper.UserMapper;
 import com.cq.template.mode.entity.User;
 import com.cq.template.mode.enums.UserRoleEnum;
@@ -30,6 +32,8 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
 
     private final TokenUtil tokenUtil;
 
+    private final DistributedLockManager distributedLockManager;
+
     /**
      * 盐值，混淆密码
      */
@@ -44,7 +48,9 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
     public LoginUserVO userLoginByMpOpen(WxOAuth2UserInfo userInfo) {
         String unionId = userInfo.getUnionId();
         String mpOpenId = userInfo.getOpenid();
-        synchronized (unionId.intern()) {
+
+        String userRegistryLock = DistributedLockKeyConstant.WXMP_USER_REGISTRY_LOCK + unionId;
+        return distributedLockManager.blockExecute(userRegistryLock, () -> {
             // 查询用户是否已存在
             User user = this.lambdaQuery().eq(User::getUnionId, unionId).one();
             // 被封号，禁止登录
@@ -66,7 +72,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
             LoginUserVO loginUserVO = getLoginUserVO(user);
             loginUserVO.setToken(tokenUtil.signToken(loginUserVO));
             return loginUserVO;
-        }
+        });
     }
 
     @Override
@@ -90,7 +96,9 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
         if (!userPassword.equals(checkPassword)) {
             throw new BusinessException(ResultCodeEnum.PARAMS_ERROR, "两次输入的密码不一致");
         }
-        synchronized (userAccount.intern()) {
+
+        String registryLock = DistributedLockKeyConstant.USER_REGISTRY_LOCK + userAccount;
+        return distributedLockManager.blockExecute(registryLock, () -> {
             // 账户不能重复
             Long count = this.lambdaQuery().eq(User::getUserAccount, userAccount).count();
             if (count > 0) {
@@ -107,7 +115,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
                 throw new BusinessException(ResultCodeEnum.SYSTEM_ERROR, "注册失败，数据库错误");
             }
             return user.getId();
-        }
+        });
     }
 
     @Override
