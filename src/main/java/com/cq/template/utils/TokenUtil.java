@@ -1,8 +1,8 @@
 package com.cq.template.utils;
 
 import cn.hutool.json.JSONUtil;
-import com.cq.template.mode.dto.user.UserLoginTokenDTO;
-import com.cq.template.mode.vo.LoginUserVO;
+import com.cq.template.model.dto.user.UserLoginTokenDTO;
+import com.cq.template.model.vo.LoginUserVO;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;

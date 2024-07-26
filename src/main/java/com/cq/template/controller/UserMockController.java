@@ -1,9 +1,9 @@
 package com.cq.template.controller;
 
 import com.cq.template.common.CommonResult;
-import com.cq.template.mode.dto.user.UserLoginMockDTO;
-import com.cq.template.mode.entity.User;
-import com.cq.template.mode.vo.LoginUserVO;
+import com.cq.template.model.dto.user.UserLoginMockDTO;
+import com.cq.template.model.entity.User;
+import com.cq.template.model.vo.LoginUserVO;
 import com.cq.template.service.UserService;
 import com.cq.template.utils.TokenUtil;
 import io.swagger.v3.oas.annotations.Operation;

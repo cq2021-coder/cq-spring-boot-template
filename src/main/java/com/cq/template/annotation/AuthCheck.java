@@ -1,6 +1,6 @@
 package com.cq.template.annotation;
 
-import com.cq.template.mode.enums.UserRoleEnum;
+import com.cq.template.model.enums.UserRoleEnum;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

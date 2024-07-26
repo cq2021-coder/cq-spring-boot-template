@@ -2,8 +2,8 @@ package com.cq.template.aop;
 
 import com.cq.template.annotation.AuthCheck;
 import com.cq.template.common.ResultCodeEnum;
-import com.cq.template.mode.entity.User;
-import com.cq.template.mode.enums.UserRoleEnum;
+import com.cq.template.model.entity.User;
+import com.cq.template.model.enums.UserRoleEnum;
 import com.cq.template.utils.ThreadLocalUtil;
 import com.cq.template.utils.ThrowUtils;
 import org.aspectj.lang.ProceedingJoinPoint;

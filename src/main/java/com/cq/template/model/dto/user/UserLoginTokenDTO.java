@@ -1,6 +1,6 @@
-package com.cq.template.mode.dto.user;
+package com.cq.template.model.dto.user;
 
-import com.cq.template.mode.vo.LoginUserVO;
+import com.cq.template.model.vo.LoginUserVO;
 import lombok.Data;
 
 import java.util.Date;

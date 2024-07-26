@@ -1,8 +1,8 @@
 package com.cq.template.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.cq.template.mode.entity.User;
-import com.cq.template.mode.vo.LoginUserVO;
+import com.cq.template.model.entity.User;
+import com.cq.template.model.vo.LoginUserVO;
 import me.chanjar.weixin.common.bean.WxOAuth2UserInfo;
 
 /**

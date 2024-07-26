@@ -1,4 +1,4 @@
-package com.cq.template.mode.enums;
+package com.cq.template.model.enums;
 
 import lombok.Getter;
 import org.apache.commons.lang3.ObjectUtils;
@@ -8,25 +8,22 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * 用户角色枚举
+ * 文件上传业务类型枚举
  *
  * @author cq
- * @since 2024/03/25
+ * @since 2024/06/01
  */
 @Getter
-public enum UserRoleEnum {
+public enum FileUploadBizEnum {
 
-    USER("用户", "user"),
-    VIP("vip", "vip"),
-    SVIP("svip", "svip"),
-    ADMIN("管理员", "admin"),
-    BAN("被封号", "ban");
+    USER_AVATAR("用户头像", "user_avatar"),
+    ;
 
     private final String text;
 
     private final String value;
 
-    UserRoleEnum(String text, String value) {
+    FileUploadBizEnum(String text, String value) {
         this.text = text;
         this.value = value;
     }
@@ -34,7 +31,7 @@ public enum UserRoleEnum {
     /**
      * 获取值列表
      *
-     * @return {@link List}<{@link String}>
+     * @return {@link List }<{@link String }>
      */
     public static List<String> getValues() {
         return Arrays.stream(values()).map(item -> item.value).collect(Collectors.toList());
@@ -44,15 +41,15 @@ public enum UserRoleEnum {
      * 根据 value 获取枚举
      *
      * @param value 值
-     * @return {@link UserRoleEnum}
+     * @return {@link FileUploadBizEnum }
      */
-    public static UserRoleEnum getEnumByValue(String value) {
+    public static FileUploadBizEnum getEnumByValue(String value) {
         if (ObjectUtils.isEmpty(value)) {
             return null;
         }
-        for (UserRoleEnum anEnum : UserRoleEnum.values()) {
-            if (anEnum.value.equals(value)) {
-                return anEnum;
+        for (FileUploadBizEnum fileUploadBizEnum : FileUploadBizEnum.values()) {
+            if (fileUploadBizEnum.value.equals(value)) {
+                return fileUploadBizEnum;
             }
         }
         return null;

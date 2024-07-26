@@ -3,7 +3,7 @@ package com.cq.template.utils;
 
 import com.cq.template.common.ResultCodeEnum;
 import com.cq.template.exception.BusinessException;
-import com.cq.template.mode.entity.User;
+import com.cq.template.model.entity.User;
 
 /**
  * 线程本地 util

@@ -1,4 +1,4 @@
-package com.cq.template.mode.entity;
+package com.cq.template.model.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;

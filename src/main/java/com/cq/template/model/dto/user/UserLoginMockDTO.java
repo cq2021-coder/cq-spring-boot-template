@@ -1,4 +1,4 @@
-package com.cq.template.mode.dto.user;
+package com.cq.template.model.dto.user;
 
 import lombok.Data;
 

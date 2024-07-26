@@ -1,6 +1,6 @@
 package com.cq.template.mapper;
 
-import com.cq.template.mode.entity.User;
+import com.cq.template.model.entity.User;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**

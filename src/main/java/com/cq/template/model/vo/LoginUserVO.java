@@ -1,4 +1,4 @@
-package com.cq.template.mode.vo;
+package com.cq.template.model.vo;
 
 import lombok.Data;
 
